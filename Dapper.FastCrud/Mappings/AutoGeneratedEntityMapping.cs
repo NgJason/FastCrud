@@ -119,7 +119,7 @@ namespace Dapper.FastCrud.Mappings
             // this can be in the form of:
             //     1. as a marked property of the same type decorated with an InversePropertyAttribute pointing back to our nav property (can even be an entity and not a collection for one-to-one relationships)
             //     2. an unmarked property of type IEnumerable<> OR
-            var parentChildrenPropGroups = TypeDescriptor.GetProperties(entityType)
+            var parentChildrenPropGroups = OrmConfiguration.Conventions.GetEntityProperties(entityType)
                                             .OfType<PropertyDescriptor>()
                                             .Select(prop =>
                                             {
